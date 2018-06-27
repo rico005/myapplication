@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="sample_string"><![CDATA[<h2>Title</h2><br><p>Description here</p>]]></string>
+    <string name="link_string"><a href="http://www.google.com">linkdddd</a></string>
+</resources>

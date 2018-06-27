@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:background="@android:color/darker_gray"
+    android:animateLayoutChanges="true">
+
+
+
+        <ImageView
+            android:id="@+id/online_banner_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/online_banner_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/online_banner_icon"
+        android:text="在线聊"
+        android:textSize="14dp"
+        android:layout_marginRight="6dp"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="6dp"
+        />
+
+
+
+</RelativeLayout>

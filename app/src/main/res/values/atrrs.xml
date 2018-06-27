@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="circleProgressBar">
+        <attr name="circleWidth" format="dimension" />
+        <attr name="startAngle" format="float" />
+        <attr name="angleRange" format="float" />
+        <attr name="firstColor" format="color" />
+        <attr name="secondColor" format="color" />
+    </declare-styleable>
+
+</resources>

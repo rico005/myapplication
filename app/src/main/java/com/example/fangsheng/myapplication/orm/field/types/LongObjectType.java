@@ -1,0 +1,68 @@
+package com.example.fangsheng.myapplication.orm.field.types;
+
+import com.example.fangsheng.myapplication.orm.field.FieldType;
+import com.example.fangsheng.myapplication.orm.field.SqlType;
+import com.example.fangsheng.myapplication.orm.support.DatabaseResults;
+
+import java.sql.SQLException;
+
+/**
+ * Type that persists a Long object.
+ * 
+ * @author graywatson
+ */
+public class LongObjectType extends BaseDataType {
+
+	private static final LongObjectType singleTon = new LongObjectType();
+
+	public static LongObjectType getSingleton() {
+		return singleTon;
+	}
+
+	private LongObjectType() {
+		super(SqlType.LONG, new Class<?>[] { Long.class });
+	}
+
+	protected LongObjectType(SqlType sqlType, Class<?>[] classes) {
+		super(sqlType, classes);
+	}
+
+	@Override
+	public Object parseDefaultString(FieldType fieldType, String defaultStr) {
+		return Long.parseLong(defaultStr);
+	}
+
+	@Override
+	public Object resultToSqlArg(FieldType fieldType, DatabaseResults results, int columnPos) throws SQLException {
+		return (Long) results.getLong(columnPos);
+	}
+
+	@Override
+	public Object convertIdNumber(Number number) {
+		return (Long) number.longValue();
+	}
+
+	@Override
+	public boolean isEscapedValue() {
+		return false;
+	}
+
+	@Override
+	public boolean isValidGeneratedType() {
+		return true;
+	}
+
+	@Override
+	public boolean isValidForVersion() {
+		return true;
+	}
+
+	@Override
+	public Object moveToNextValue(Object currentValue) {
+		if (currentValue == null) {
+			return (Long) 1L;
+		} else {
+			return ((Long) currentValue) + 1L;
+		}
+	}
+}
