@@ -14,17 +14,18 @@ import com.example.fangsheng.myapplication.remote.RemoteBusiness;
 /**
  * 参考资料 https://blog.csdn.net/xiligey1/article/details/73321152
  */
-public class BaiduPicSearchProcessor {
+public class BaiduPicSearchTextParser implements IPicSearchProcessor {
 
     /**
      * 根据不同的关键词,获取远端(百度图片)图片列表，并展示在列表页
      * TODO 支持分页
      */
-    public static void fetchRemotePicList(String keywords, GetResultListener<List<String>, Object> listener){
+    @Override
+    public void fetchRemotePicList(String keywords, GetResultListener<List<String>, Object> listener){
         new RemoteGetTask(keywords, listener).execute();
     }
 
-    public static List<String> extractPicUrl(String htmlRaw){
+    public List<String> extractPicUrl(String htmlRaw){
         List<String> picUrls = new ArrayList<>();
         if (TextUtils.isEmpty(htmlRaw)){
             return picUrls;
@@ -38,7 +39,7 @@ public class BaiduPicSearchProcessor {
         return picUrls;
     }
 
-    private static String assembleQueryUrl(String baseUrl, String keywords){
+    public static String assembleQueryUrl(String baseUrl, String keywords){
         try {
             String queryWords = URLEncoder.encode(keywords, "utf-8");
             return baseUrl.concat("&" + BaiduConstants.baidu_pic_search_word_key + "=" + queryWords);
@@ -48,7 +49,7 @@ public class BaiduPicSearchProcessor {
         return null;
     }
 
-    public static class RemoteGetTask extends AsyncTask<Void, Void, List<String>> {
+    public class RemoteGetTask extends AsyncTask<Void, Void, List<String>> {
 
         private String keywords;
         private GetResultListener<List<String>, Object> listener;

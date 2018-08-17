@@ -31,7 +31,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import com.example.fangsheng.myapplication.ShortcutBadger.ShortcutBadgerUtils;
 import com.example.fangsheng.myapplication.appops.AppOpsUtil;
-import com.example.fangsheng.myapplication.baidupic.BaiduPicSearchProcessor;
 import com.example.fangsheng.myapplication.baidupic.PicDisplayActivity;
 import com.example.fangsheng.myapplication.circleprogressbar.CircleProgressBar;
 import com.example.fangsheng.myapplication.decorate.DecorateHelper;

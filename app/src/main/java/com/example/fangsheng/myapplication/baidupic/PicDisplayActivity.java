@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
@@ -66,7 +65,7 @@ public class PicDisplayActivity extends AppCompatActivity {
     }
 
     private void doFetchPicByKeywords(String keywords){
-        BaiduPicSearchProcessor.fetchRemotePicList(keywords, new GetResultListener<List<String>, Object>() {
+        new BaiduPicSearchJsoupParser().fetchRemotePicList(keywords, new GetResultListener<List<String>, Object>() {
 
             @Override
             public void onSuccess(List<String> data, Object context) {

@@ -8,6 +8,8 @@ public class BaiduConstants {
 
     //匹配图片url的正则
     public static final String baidu_pic_search_regex = "\"objurl\":\"(.*?)\",";
+    //通过jsoup返回的内容，正则匹配略有区别
+    public static final String baidu_pic_search_regex_jsoup = "\"objURL\":\"(.*?)\",";
 
     //匹配翻页url的正则
     public static final String baidu_pic_search_fanye_regex = "<a href=\"(.*)\" class=\"n\">下一页</a>";
