@@ -36,6 +36,7 @@ import com.example.fangsheng.myapplication.circleprogressbar.CircleProgressBar;
 import com.example.fangsheng.myapplication.decorate.DecorateHelper;
 import com.example.fangsheng.myapplication.decorate.decorator.TestChildDecorator;
 import com.example.fangsheng.myapplication.dingtalkrobot.DingtalkRobotProcessor;
+import com.example.fangsheng.myapplication.image.ImageCutActivity;
 import com.example.fangsheng.myapplication.notification.AgooNotificationManger;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private Button notificationBtn2;
     private Button dingtalkrobotBtn;
     private Button baidupicfetchBtn;
+    private Button imageCutBtn;
     private TextView titleTv;
     private TextView htmlTv;
     private ScrollView textSv;
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         notificationBtn2 = (Button)findViewById(R.id.notification_btn2);
         dingtalkrobotBtn = (Button)findViewById(R.id.dingtalkrobot_btn);
         baidupicfetchBtn = (Button)findViewById(R.id.baidupicfetch_btn);
+        imageCutBtn = findViewById(R.id.imagecut_btn);
         titleTv = (TextView)findViewById(R.id.title_tv);
         gestureDetector = new GestureDetector(this.getApplicationContext(), new GestureDetector.SimpleOnGestureListener(){
             @Override
@@ -115,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
         textSv = (ScrollView) findViewById(R.id.textview_sv);
-
 
         handleClickSpan();
 
@@ -180,6 +182,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        imageCutBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoImageCutActivity();
+            }
+        });
+
         contactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,6 +228,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoPicDisplayActivity(){
         Intent i = new Intent(this, PicDisplayActivity.class);
+        this.startActivity(i);
+    }
+
+    private void gotoImageCutActivity(){
+        Intent i = new Intent(this, ImageCutActivity.class);
         this.startActivity(i);
     }
 
