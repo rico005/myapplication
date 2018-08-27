@@ -11,13 +11,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        //以上方法配置，将忽略项目中已存在的Android.mk文件而自动生成一个位于build文件夹下的Android.mk
         ndk {
-            moduleName "jniDemo" //生成的so文件名字，调用C程序的代码中会用到该名字
-            ldLibs "log", "z", "m"
-            abiFilters "armeabi", "armeabi-v7a", "x86" //输出指定三种平台下的so库
-//            stl "gunstl_static"
-//            cFlags "-std=c++11"
+            abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a'
+        }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+                //可使用android.defaultConfig.externalNativeBuild.cmake.abiFilters来单独指示CMake输出的ABI版本。但最终打包进APK的ABI版本还是由ndk.abiFilters决定
+                abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a'
+            }
         }
 
     }
@@ -36,14 +39,13 @@ android {
     dexOptions {
         preDexLibraries = false
     }
-    /*
+
     externalNativeBuild {
-        ndkBuild {
-            // Android.mk 的相对路径
-            path "build/intermediates/ndk/debug/Android.mk"
+        cmake {
+            path "CMakeLists.txt"
         }
     }
-    */
+
 
 
     sourceSets {

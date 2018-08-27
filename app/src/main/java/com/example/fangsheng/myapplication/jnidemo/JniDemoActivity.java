@@ -13,6 +13,7 @@ public class JniDemoActivity extends AppCompatActivity {
 
     static {
         System.loadLibrary("jniDemo");//加载so文件，不要带上前缀lib和后缀.so
+        System.loadLibrary("jniDemoCpp");
     }
     public native String helloJni();//定义本地方法接口，这个方法类似虚方法，实现是用c或者c++实现的
 
@@ -33,6 +34,8 @@ public class JniDemoActivity extends AppCompatActivity {
     //构造新java对象
     public native JniJavaObj newJavaObj();
 
+    public native String helloJniCpp();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +54,8 @@ public class JniDemoActivity extends AppCompatActivity {
         String content = helloJni()
             + "\n" + "sum : " + sum(new int[]{1,2,3})
             + "\n" + "age : " + javaObj.age
-            + "\n" + "name : " + JniJavaObj.name;
+            + "\n" + "name : " + JniJavaObj.name
+            + "\n" + helloJniCpp();
         mContentTV.setText(content);
 
         JniJavaObj newOne = newJavaObj();
