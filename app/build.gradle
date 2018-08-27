@@ -10,16 +10,49 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //以上方法配置，将忽略项目中已存在的Android.mk文件而自动生成一个位于build文件夹下的Android.mk
+        ndk {
+            moduleName "jniDemo" //生成的so文件名字，调用C程序的代码中会用到该名字
+            ldLibs "log", "z", "m"
+            abiFilters "armeabi", "armeabi-v7a", "x86" //输出指定三种平台下的so库
+//            stl "gunstl_static"
+//            cFlags "-std=c++11"
+        }
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk {
+                debuggable = true
+            }
+        }
+        debug {
+            jniDebuggable true
         }
     }
     dexOptions {
         preDexLibraries = false
     }
+    /*
+    externalNativeBuild {
+        ndkBuild {
+            // Android.mk 的相对路径
+            path "build/intermediates/ndk/debug/Android.mk"
+        }
+    }
+    */
+
+
+    sourceSets {
+        main {
+            //路径设为空，不使用src/main/jniLibs目录下已编译出的so文件，通过上面defaultConfig中的ndk配置从c源码重新生成
+            jniLibs.srcDirs = []//['src/main/jniLibs']
+        }
+    }
+
 }
 
 dependencies {
@@ -30,9 +63,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.1.0'
     testCompile 'junit:junit:4.12'
     compile 'me.leolin:ShortcutBadger:1.1.19@aar'
-    compile ('com.android.support:recyclerview-v7:26.1.0')
-
+    compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-
     compile 'org.jsoup:jsoup:1.11.3'
+
+//    compile 'com.android.tools.build:gradle-experimental:0.7.0'
 }

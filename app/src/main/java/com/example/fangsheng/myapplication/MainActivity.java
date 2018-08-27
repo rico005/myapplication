@@ -37,6 +37,7 @@ import com.example.fangsheng.myapplication.decorate.DecorateHelper;
 import com.example.fangsheng.myapplication.decorate.decorator.TestChildDecorator;
 import com.example.fangsheng.myapplication.dingtalkrobot.DingtalkRobotProcessor;
 import com.example.fangsheng.myapplication.image.ImageCutActivity;
+import com.example.fangsheng.myapplication.jnidemo.JniDemoActivity;
 import com.example.fangsheng.myapplication.notification.AgooNotificationManger;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private Button dingtalkrobotBtn;
     private Button baidupicfetchBtn;
     private Button imageCutBtn;
+    private Button jniBtn;
     private TextView titleTv;
     private TextView htmlTv;
     private ScrollView textSv;
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         dingtalkrobotBtn = (Button)findViewById(R.id.dingtalkrobot_btn);
         baidupicfetchBtn = (Button)findViewById(R.id.baidupicfetch_btn);
         imageCutBtn = findViewById(R.id.imagecut_btn);
+        jniBtn = findViewById(R.id.jni_btn);
         titleTv = (TextView)findViewById(R.id.title_tv);
         gestureDetector = new GestureDetector(this.getApplicationContext(), new GestureDetector.SimpleOnGestureListener(){
             @Override
@@ -189,6 +192,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        jniBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoJniDemoActivity();
+            }
+        });
+
         contactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,6 +243,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoImageCutActivity(){
         Intent i = new Intent(this, ImageCutActivity.class);
+        this.startActivity(i);
+    }
+
+    private void gotoJniDemoActivity(){
+        Intent i = new Intent(this, JniDemoActivity.class);
         this.startActivity(i);
     }
 
