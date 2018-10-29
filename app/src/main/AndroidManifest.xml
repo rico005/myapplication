@@ -25,6 +25,8 @@
 
         <activity android:name=".image.ImageCutActivity"></activity>
 
+        <activity android:name=".image.ImagePopActivity"></activity>
+
     </application>
 
 </manifest>

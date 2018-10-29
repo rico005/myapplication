@@ -27,7 +27,19 @@ public class ImageCutActivity extends AppCompatActivity {
 
     private void imageCut(){
         mImg = findViewById(R.id.cut_iv);
-        mImg.setImageBitmap(matrix2());
+        mImg.setImageBitmap(cutLeftTopMinus());
+    }
+
+    private Bitmap cutLeftTopMinus() {
+        Bitmap origialBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.original);
+        Bitmap cutBitmap = Bitmap.createBitmap(origialBitmap.getWidth() / 2,
+            origialBitmap.getHeight() / 2, Config.ARGB_8888);
+        Canvas canvas = new Canvas(cutBitmap);
+        Rect desRect = new Rect(0, 0, origialBitmap.getWidth() / 2, origialBitmap.getHeight() / 2);
+        Rect srcRect = new Rect(-100, -100, origialBitmap.getWidth()/2 - 100,
+            origialBitmap.getHeight() / 2 - 100);
+        canvas.drawBitmap(origialBitmap, srcRect, desRect, null);
+        return cutBitmap;
     }
 
     private Bitmap cutRightTop() {

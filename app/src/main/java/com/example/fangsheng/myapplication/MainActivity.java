@@ -37,6 +37,7 @@ import com.example.fangsheng.myapplication.decorate.DecorateHelper;
 import com.example.fangsheng.myapplication.decorate.decorator.TestChildDecorator;
 import com.example.fangsheng.myapplication.dingtalkrobot.DingtalkRobotProcessor;
 import com.example.fangsheng.myapplication.image.ImageCutActivity;
+import com.example.fangsheng.myapplication.image.ImagePopActivity;
 import com.example.fangsheng.myapplication.notification.AgooNotificationManger;
 
 public class MainActivity extends AppCompatActivity {
@@ -232,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoImageCutActivity(){
-        Intent i = new Intent(this, ImageCutActivity.class);
+        Intent i = new Intent(this, ImagePopActivity.class);
         this.startActivity(i);
     }
 
