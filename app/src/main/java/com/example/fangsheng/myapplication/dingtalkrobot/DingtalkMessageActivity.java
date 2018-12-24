@@ -39,10 +39,12 @@ public class DingtalkMessageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (TextUtils.isEmpty(currentTargetToken)){
                     Toast.makeText(DingtalkMessageActivity.this, "请选择有效的目标会话", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 String content = mContentED.getText().toString();
                 if (TextUtils.isEmpty(content)){
                     Toast.makeText(DingtalkMessageActivity.this, "发送内容不能为空", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 DingtalkRobotProcessor.sendTextByRobot(currentTargetToken, content);
                 Toast.makeText(DingtalkMessageActivity.this, "消息已发送", Toast.LENGTH_SHORT).show();
