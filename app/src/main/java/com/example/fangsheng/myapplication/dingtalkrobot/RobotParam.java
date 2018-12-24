@@ -17,6 +17,11 @@ public class RobotParam {
         public String content = "send from client";
     }
 
+    public RobotParam text(String content){
+        text.content = content;
+        return this;
+    }
+
     public String toJSON(){
 
         JSONObject jsonObject= new JSONObject();

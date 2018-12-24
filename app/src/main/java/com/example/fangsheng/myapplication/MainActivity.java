@@ -35,6 +35,7 @@ import com.example.fangsheng.myapplication.baidupic.PicDisplayActivity;
 import com.example.fangsheng.myapplication.circleprogressbar.CircleProgressBar;
 import com.example.fangsheng.myapplication.decorate.DecorateHelper;
 import com.example.fangsheng.myapplication.decorate.decorator.TestChildDecorator;
+import com.example.fangsheng.myapplication.dingtalkrobot.DingtalkMessageActivity;
 import com.example.fangsheng.myapplication.dingtalkrobot.DingtalkRobotProcessor;
 import com.example.fangsheng.myapplication.image.ImageCutActivity;
 import com.example.fangsheng.myapplication.image.ImagePopActivity;
@@ -172,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         dingtalkrobotBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                DingtalkRobotProcessor.sendTextByRobot();
+                gotoDingtalkMsgActivity();
             }
         });
 
@@ -240,6 +241,11 @@ public class MainActivity extends AppCompatActivity {
     private void gotoDecoratorTestActivity(){
         Intent i = new Intent(this, DecoratorTestActivity.class);
         i = DecorateHelper.assembleIntent(i, null, DecorateHelper.build().addDecorator(TestChildDecorator.class));
+        this.startActivity(i);
+    }
+
+    private void gotoDingtalkMsgActivity(){
+        Intent i = new Intent(this, DingtalkMessageActivity.class);
         this.startActivity(i);
     }
 

@@ -5,8 +5,8 @@ import com.example.fangsheng.myapplication.remote.RemoteBusiness;
 
 public class DingtalkRobotProcessor {
 
-    public static void sendTextByRobot(){
-        new RemotePostTask().execute(new String[]{RobotConstants.dingtalk_robot_webhook, new RobotParam().toJSON(), RobotConstants.content_type});
+    public static void sendTextByRobot(String targetToken, String text){
+        new RemotePostTask().execute(new String[]{RobotConstants.dingtalk_robot_webhook + targetToken, new RobotParam().text(text).toJSON(), RobotConstants.content_type});
     }
 
     public static class RemotePostTask extends AsyncTask<String, Void, Void> {
