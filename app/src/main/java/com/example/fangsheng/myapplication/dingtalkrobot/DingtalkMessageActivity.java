@@ -42,6 +42,11 @@ public class DingtalkMessageActivity extends AppCompatActivity {
                     return;
                 }
                 String content = mContentED.getText().toString();
+
+                content = "1、上新改为双排Feed流\n"
+                    + "2、详情页面去掉挂件\n"
+                    + "3、拼脚波谱图快速验证页面上预发（需要扫特定二维码入口）\n 二维码入口详见群公告地址，务必切换到预发环境！！！";
+
                 if (TextUtils.isEmpty(content)){
                     Toast.makeText(DingtalkMessageActivity.this, "发送内容不能为空", Toast.LENGTH_SHORT).show();
                     return;
