@@ -1,0 +1,22 @@
+apply plugin: 'groovy'
+
+dependencies {
+    compile gradleApi()//gradle sdk
+    compile localGroovy()//groovy sdk
+}
+
+repositories {
+    jcenter()
+}
+
+//apply plugin: 'ThirdPlugin'
+//
+//class ThirdPlugin implements Plugin<Project> {
+//
+//    @Override
+//    void apply(Project project) {
+//        System.out.println("========================");
+//        System.out.println("这是第三个插件!");
+//        System.out.println("========================");
+//    }
+//}

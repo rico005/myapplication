@@ -3,12 +3,34 @@
 buildscript {
     repositories {
         jcenter()
+        maven {//本地Maven仓库地址
+            url uri('/Users/fangsheng/.m2/repository')
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
 
+        classpath 'com.fangsheng.plugin:myplugin:1.0.0'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+    }
+}
+
+//com.fangsheng.gradle为resources/META-INF/gradle-plugins
+//下的properties文件名称
+//apply plugin: 'com.fangsheng.gradle' //这行放到app module的build.gradle中，否则插件代码中使用的AppExtension会找不到
+apply plugin: 'com.fangsheng.second'
+
+apply plugin: ThirdPlugin
+
+class ThirdPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(Project project) {
+        System.out.println("========================");
+        System.out.println("这是第三个插件!");
+        System.out.println("========================");
     }
 }
 
@@ -16,6 +38,10 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        // Taobao Maven仓库
+        maven {
+            url "http://mvnrepo.alibaba-inc.com/mvn/repository"
+        }
     }
 }
 
