@@ -34,6 +34,8 @@ import com.example.fangsheng.myapplication.baidupic.PicDisplayActivity;
 import com.example.fangsheng.myapplication.circleprogressbar.CircleProgressBar;
 import com.example.fangsheng.myapplication.decorate.DecorateHelper;
 import com.example.fangsheng.myapplication.decorate.decorator.TestChildDecorator;
+import com.example.fangsheng.myapplication.dingtalkrobot.DingtalkRobotProcessor;
+import com.example.fangsheng.myapplication.image.ImageCutActivity;
 import com.example.fangsheng.myapplication.notification.AgooNotificationManger;
 import com.example.fangsheng.myapplication.shadow.ShadowImageActivity;
 
