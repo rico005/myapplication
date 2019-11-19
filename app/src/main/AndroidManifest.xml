@@ -25,6 +25,8 @@
 
         <activity android:name=".image.ImageCutActivity"></activity>
 
+        <activity android:name=".shadow.ShadowImageActivity"></activity>
+
     </application>
 
 </manifest>
