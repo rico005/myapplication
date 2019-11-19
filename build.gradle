@@ -16,6 +16,9 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        maven {
+            url "http://mvnrepo.alibaba-inc.com/mvn/repository"
+        }
     }
 }
 
