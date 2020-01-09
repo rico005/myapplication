@@ -27,6 +27,8 @@
 
         <activity android:name=".shadow.ShadowImageActivity"></activity>
 
+        <activity android:name=".asynclayout.AsyncLayoutActivity"></activity>
+
     </application>
 
 </manifest>
