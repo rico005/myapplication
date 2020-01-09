@@ -12,14 +12,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         ndk {
-            abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a'
+            abiFilters 'x86', 'x86_64', 'armeabi-v7a'
         }
 
         externalNativeBuild {
             cmake {
                 cppFlags ""
                 //可使用android.defaultConfig.externalNativeBuild.cmake.abiFilters来单独指示CMake输出的ABI版本。但最终打包进APK的ABI版本还是由ndk.abiFilters决定
-                abiFilters 'x86', 'x86_64', 'armeabi', 'armeabi-v7a'
+                abiFilters 'x86', 'x86_64', 'armeabi-v7a'
             }
         }
 
