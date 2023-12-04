@@ -10,6 +10,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ''
+            }
+        }
     }
     buildTypes {
         release {
@@ -19,6 +24,15 @@ android {
     }
     dexOptions {
         preDexLibraries = false
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    externalNativeBuild {
+        cmake {
+            path file('CMakeLists.txt')
+            version '3.6.0-rc2'
+        }
     }
 }
 

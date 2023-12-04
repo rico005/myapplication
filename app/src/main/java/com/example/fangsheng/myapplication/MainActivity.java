@@ -39,7 +39,12 @@ import com.example.fangsheng.myapplication.image.ImageCutActivity;
 import com.example.fangsheng.myapplication.notification.AgooNotificationManger;
 import com.example.fangsheng.myapplication.shadow.ShadowImageActivity;
 
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Random;
+
+import dalvik.system.DexClassLoader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -160,7 +165,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                performNotify(0);
 //                gotoDecoratorTestActivity();
-                sendBroadcast();
+                //sendBroadcast();
+                loadClass();
             }
         });
 
@@ -278,6 +284,31 @@ public class MainActivity extends AppCompatActivity {
 
     public String testEnumValueOf(){
         return GroupUserIdentityModel.valueOf("2").code();
+    }
+
+    public void loadClass() {
+        File dexOptimizeDir = getExternalFilesDir("dex");//getDir("dex", Context.MODE_PRIVATE);
+        File originDex = new File(getExternalCacheDir(), "DynClassTest");
+        Log.d("MainActivity", "dexOptimizeDir=" + dexOptimizeDir.getAbsolutePath() + " | originDex=" + originDex.getAbsolutePath());
+        DexClassLoader dexClassLoader = new DexClassLoader(originDex.getAbsolutePath(),dexOptimizeDir.getAbsolutePath(),null,getClassLoader());
+        Class<?> aClass = null;
+        try {
+            aClass = dexClassLoader.loadClass("DynClassTest");
+            Object o = aClass.newInstance();
+            Method dexPrint = aClass.getMethod("DexPrint");
+            dexPrint.invoke(o); //调用DexPrint 方法
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     /*
